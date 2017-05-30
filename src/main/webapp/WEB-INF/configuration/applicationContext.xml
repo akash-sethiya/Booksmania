@@ -1,0 +1,126 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	 xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+		
+		
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.impetus.dao"></context:component-scan>
+	<context:component-scan base-package="com.impetus.services"></context:component-scan>
+	<context:component-scan base-package="com.impetus.commons"></context:component-scan>
+	<mvc:annotation-driven />
+	 <!-- for clearing the cookies on the browser after logout -->
+<!--       <mvc:interceptors> -->
+<!--         <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor"> -->
+<!--                 <property name="cacheSeconds" value="0"/> -->
+<!--                 <property name="useExpiresHeader" value="false"/> -->
+<!--                 <property name="useCacheControlHeader" value="true"/> -->
+<!--                 <property name="useCacheControlNoStore" value="true"/> -->
+<!--             </bean>      -->
+<!--      </mvc:interceptors> -->
+	
+	
+	<!-- Services Beans -->
+	<bean id="userService" class="com.impetus.services.impl.UserServiceImpl" />
+	<bean id="subscriptionService" class="com.impetus.services.impl.SubscriptionServiceImpl" />
+	<bean id="userAddressService" class="com.impetus.services.impl.UserAddressServiceImpl" />
+	<bean id="userDetailsService" class="com.impetus.services.impl.UserDetailsServiceImpl" />
+	<bean id="roleService" class="com.impetus.services.impl.RoleServiceImpl" />
+	<bean id="userAuthenticateService" class="com.impetus.services.impl.AuthenticateUserServiceImpl" />
+	<bean id="languageService" class="com.impetus.services.impl.LanguageServiceImpl" />
+	<bean id="bookService" class="com.impetus.services.impl.BookServiceImpl" />
+	<bean id="bookCategoryService" class="com.impetus.services.impl.BookCategoryServiceImpl" />
+	<bean id="myShelfService" class="com.impetus.services.impl.MyShelfServiceImpl"/>
+	<bean id="requestService" class="com.impetus.services.impl.RequestServiceImpl" />
+	<bean id="pdfService" class="com.impetus.services.impl.PdfServiceImpl" />
+	<bean id="historyService" class="com.impetus.services.impl.HistoryServiceImpl" />
+	<bean id="pdf" class="com.impetus.commons.pdf.Pdf"/>
+	<bean id="schedularService" class="com.impetus.services.schedular.impl.TaskSchedularServiceImpl"></bean>
+	
+	<!-- DAO Beans -->
+	<bean id="userDAO" class="com.impetus.dao.impl.UserDAOImpl"/>
+	<bean id="subscriptionDAO" class="com.impetus.dao.impl.SubscriptionDAOImpl" />
+	<bean id="userAddressDAO" class="com.impetus.dao.impl.UserAddressDAOImpl" />
+	<bean id="userDetailsDAO" class="com.impetus.dao.impl.UserDetailsDAOImpl" />
+	<bean id="roleDAO" class="com.impetus.dao.impl.RoleDAOImpl" />
+	<bean id="languageDAO" class="com.impetus.dao.impl.LanguageDAOImpl" />
+	<bean id="bookDAO" class="com.impetus.dao.impl.BookDAOImpl" />
+	<bean id="bookCategoryDAO" class="com.impetus.dao.impl.BookCategoryDAOImpl" />
+	<bean id="myShelfDAO" class="com.impetus.dao.impl.MyShelfDAOImpl"/>
+	<bean id="requestDAO" class="com.impetus.dao.impl.RequestDAOImpl"/>
+	<bean id="historyDAO" class="com.impetus.dao.impl.HistoryDAOImpl"/>
+	<bean id="pdfDAO" class="com.impetus.dao.impl.PdfDAOImpl" />
+	<bean id="schedularDAO" class="com.impetus.dao.schedular.impl.TaskSchedularDAOImpl"></bean>
+	
+	
+	<!-- Hibernate Configurations -->
+   	
+   	<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+ 	</bean>
+ 	
+ 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+ 	
+ 	<tx:annotation-driven transaction-manager="hibernateTransactionManager" />
+ 	
+   	
+   	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+ 		<property  name="dataSource" ref="dataSource"></property>
+ 		<property name="hibernateProperties">
+ 			<props>
+ 				<prop key="hibenrate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+ 				<prop key="hibernate.show_sql">true</prop>
+ 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+ 			</props>
+ 		</property>
+ 		<property name="packagesToScan">
+			<list>
+				<value>com.impetus.dao.api</value>
+				<value>com.impetus.dao.impl</value>
+			</list>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.impetus.domain.Users</value>
+				<value>com.impetus.domain.Subscription</value>
+				<value>com.impetus.domain.Address</value>
+				<value>com.impetus.domain.UserDetails</value>
+				<value>com.impetus.domain.Role</value>
+				<value>com.impetus.domain.Book</value>
+				<value>com.impetus.domain.BookCategory</value>
+				<value>com.impetus.domain.Language</value>
+				<value>com.impetus.domain.SubscriptionHistory</value>
+				<value>com.impetus.domain.UserShelf</value>
+				<value>com.impetus.domain.Request</value>
+				<value>com.impetus.domain.History</value>
+			</list>
+		</property>
+ 		
+ 	</bean>
+   	
+   	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/booksmaniademo" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </bean>
+    
+    <task:annotation-driven />
+    	<bean id="schedular" class="com.impetus.commons.schedular.Schedular"></bean>
+    	
+    	
+    	
+	
+</beans>

@@ -1,0 +1,208 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- Template Before Login -->
+	<definition name="template" template="/WEB-INF/views/templates/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/header_before_login.jsp" />
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
+	
+	<definition name="home" extends="template">
+		<put-attribute name="title" value="Booksmania: Home"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/guest/home.jsp" />
+	</definition>
+	
+	<definition name="search" extends="template">
+		<put-attribute name="title" value="Booksmania:Books"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/guest/search.jsp" />
+	</definition>
+	
+	<definition name="showBook" extends="template">
+		<put-attribute name="header" value=""></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/guest/viewBook.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="register" extends="template">
+		<put-attribute name="title" value="Booksmania:Register Yourself"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/guest/registration.jsp" />
+	</definition>
+	
+	<definition name="login" extends="template">
+		<put-attribute name="title" value="Booksmania:Login"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/guest/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="contact" extends="template">
+		<put-attribute name="title" value="Booksmania:Contact us"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/guest/contactUs.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="error" extends="template">
+		<put-attribute name="title" value="Booksmania:Error :P"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/error.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="errorpage" extends="template">
+		<put-attribute name="header" value=""></put-attribute>
+		<put-attribute name="title" value="Booksmania:Oops Error hit"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/errorpage.jsp"></put-attribute>
+		<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	
+	<!-- Template After Login -->
+	<definition name="welcomeTemplate" template="/WEB-INF/views/templates/welcomeTemplate.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/header_after_login.jsp" />
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
+	
+	<definition name="welcome/home" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:Userhome"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/search.jsp" />
+	</definition>
+	
+	<definition name="welcome/error" extends="welcomeTemplate">
+	<put-attribute name="title" value="Booksmania:error"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/error.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/profile" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:User Profile"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/profile.jsp" />
+	</definition>
+	
+	<definition name="welcome/update" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania: Update Profile"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/update.jsp" />
+	</definition>
+	
+	<definition name="welcome/myShelf" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:User Shelf"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/myShelf.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/userRequests" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:User Book Requests"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/userRequests.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/request" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:Requests"></put-attribute>
+		<put-attribute name="header" value=""></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/request.jsp"></put-attribute>
+		<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<!-- <definition name="welcome/allRequests" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:Login"></put-attribute>
+		<put-attribute name="sideBar" value="/WEB-INF/views/tiles/body/sideBar.jsp"></put-attribute>
+	</definition> -->
+	
+	<definition name="welcome/delieveryRequests" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:Delivery Requests"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/delieveryRequests.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/returnRequests" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:Return Requests"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/returnRequests.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/returnPendingRequests" extends="welcomeTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/returnPendingRequests.jsp"></put-attribute>
+		<put-attribute name="title" value="Booksmania:Pending Return Requests"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/recommend" extends="welcomeTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/recommend.jsp"/>
+		<put-attribute name="title" value="Booksmania:Recommendation"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/mySubscription" extends="welcomeTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/userCurrentSubscripition.jsp"></put-attribute>
+		<put-attribute name="title" value="Booksmania:User Subscription"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/history" extends="welcomeTemplate">
+		<put-attribute name="title" value="Booksmania:User History"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/user/history.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="welcome/errorpage" extends="welcomeTemplate">
+		<put-attribute name="header" value=""></put-attribute>
+		<put-attribute name="title" value="Booksmania:Oops Error hit"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/errorpage.jsp"></put-attribute>
+		<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	
+	
+	<!-- Admin Template -->
+	<definition name="adminTemplate" template="/WEB-INF/views/templates/adminTemplate.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/adminHeader.jsp" />
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
+	
+	<definition name="admin/home" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:ADMIN"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/adminHome.jsp" />
+	</definition>
+	
+	<definition name="admin/operations" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:Operations"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/operations.jsp" />
+	</definition>
+	
+	<definition name="admin/addBook" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:Add the book"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/addBook.jsp" />
+	</definition>
+	
+	<definition name="admin/viewBook" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:View Books"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/viewBook.jsp" />
+	</definition>
+	
+	<!-- <definition name="admin/addSubscription" extends="adminTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/addSubscription.jsp"></put-attribute>
+	</definition> -->
+	
+	<definition name="admin/viewSubscription" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:Subscription Plans"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/viewSubscription.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin/update" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:Update the book"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/updateBook.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin/userRequests" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:Users Requests"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/userRequests.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin/report" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:REPORT"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/report.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin/activeUsers" extends="adminTemplate">
+		<put-attribute name="title" value="Booksmania:Active Users"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/admin/viewUsersWithActiveSubscription.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin/errorpage" extends="adminTemplate">
+		<put-attribute name="header" value=""></put-attribute>
+		<put-attribute name="title" value="Booksmania:Oops Error hit"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/body/errorpage.jsp"></put-attribute>
+		<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+
+</tiles-definitions>

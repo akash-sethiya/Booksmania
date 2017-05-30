@@ -1,0 +1,72 @@
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    
+	<display-name>Booksmania - Single repository for borrowing books</display-name>
+ 
+  	<context-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>
+  			/WEB-INF/configuration/security.xml
+  			/WEB-INF/configuration/applicationContext.xml
+  			/WEB-INF/configuration/tiles.xml
+		</param-value>
+  	</context-param>
+  
+  	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+	<listener>
+		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+ 	</listener>
+  	
+  	<servlet>
+  		<servlet-name>dispatcher</servlet-name>
+  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>dispatcher</servlet-name>
+  		<url-pattern>/</url-pattern>
+  	</servlet-mapping>
+  	
+  	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>  
+	
+	<session-config>
+   		<session-timeout>-1</session-timeout>
+	</session-config>
+	
+	<!-- Error/Exception Handling -->
+	 <error-page>
+    	<error-code>404</error-code>
+    	<location>/404</location>
+	</error-page>
+	
+	<error-page>
+    	<error-code>403</error-code>
+    	<location>/403</location>
+	</error-page>
+	
+	<error-page>
+    	<error-code>400</error-code>
+    	<location>/400</location>
+	</error-page>
+	
+	<error-page>
+    	<error-code>405</error-code>
+    	<location>/405</location>
+	</error-page>
+	
+ 	<error-page>
+     	<error-code>500</error-code>
+     	<location>/500</location>
+	</error-page>
+	
+	
+</web-app>
